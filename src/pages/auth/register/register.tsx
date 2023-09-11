@@ -26,8 +26,11 @@ const Register = () => {
   });
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen bg-gray-50">
-      <form onSubmit={onSubmit} className="flex flex-col w-full max-w-xl space-y-8 text-gray-700 bg-white rounded p-9">
+    <div className="flex items-center justify-center w-full min-h-screen bg-blue-50">
+      <form
+        onSubmit={onSubmit}
+        className="flex flex-col w-full max-w-xl space-y-8 text-gray-700 bg-white shadow rounded-xl p-9"
+      >
         <h1 className="text-lg text-center">Sign-up Page</h1>
         <Controller
           name="email"

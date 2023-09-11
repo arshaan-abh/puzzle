@@ -4,11 +4,74 @@
 
 @layer base {
   html {
+    @apply scroll-smooth;
+    @apply select-none;
     font-family: 'Poppins', sans-serif;
   }
-  .MuiInputBase-input {
-    &:focus {
-      box-shadow: none;
-    }
+}
+
+.MuiInputBase-input {
+  &:focus {
+    box-shadow: none;
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 20px;
+  transition: all 0.3s linear;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #110946;
+  border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #170e64;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 5px;
+}
+
+::-webkit-scrollbar-track:horizontal {
+  background-color: #f1f5f9;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  border-radius: 20px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+  background-color: #cedcea;
+}
+
+.dark-scroll-color::-webkit-scrollbar-track {
+  background-color: #dfdfe2;
+  border-radius: 20px;
+}
+
+.dark-scroll-color::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+  background-color: #6c6c75;
+}
+
+// Autocomplete white background
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
 }
