@@ -1,16 +1,14 @@
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { object, ObjectSchema, string } from 'yup';
 import { Button, TextField } from '@mui/material';
 import { RegisterRequest } from '../../../@types/register-request';
 // import { useRegister } from '../../../hooks/use-register/use-register';
 
-const schema = yup
-  .object({
-    email: yup.string().required(),
-    password: yup.string().required(),
-  })
-  .required();
+const schema: ObjectSchema<RegisterRequest> = object({
+  email: string().email().required('This field is required.'),
+  password: string().min(6).required('This field is required.'),
+}).required();
 
 const Register = () => {
   // const registerMutation = useRegister();
@@ -30,7 +28,7 @@ const Register = () => {
   return (
     <div className="flex items-center justify-center w-full min-h-screen bg-gray-50">
       <form onSubmit={onSubmit} className="flex flex-col w-full max-w-xl space-y-8 text-gray-700 bg-white rounded p-9">
-        <h1 className="text-lg text-center">Sign-in Page</h1>
+        <h1 className="text-lg text-center">Sign-up Page</h1>
         <Controller
           name="email"
           control={control}
