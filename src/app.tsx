@@ -9,7 +9,15 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
 import Routes from './routes';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  // defaultOptions: {
+  //   mutations: {
+  //     onError: () => {
+  //       toast.error('Error happened');
+  //     },
+  //   },
+  // },
+});
 
 const App = () => {
   return (
