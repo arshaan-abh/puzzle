@@ -28,7 +28,7 @@ export default function Home() {
   }
 
   return (
-    <div className={`grid grid-cols-${rows} gap-4`}>
+    <div className="grid grid-cols-1 gap-4" style={{ gridTemplateColumns: `repeat(${rows}, minmax(0, 1fr))` }}>
       {matrix.map((row, rowIndex) =>
         row.map((cell, columnIndex) => {
           if (cell === emptyCell) return <EmptyTile key={emptyCell} />;
