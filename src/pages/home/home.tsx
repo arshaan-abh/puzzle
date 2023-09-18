@@ -42,17 +42,21 @@ export default function Home() {
   }
 
   return (
-    <>
-      <div className="grid grid-cols-1 gap-4" style={{ gridTemplateColumns: `repeat(${rows}, minmax(0, 1fr))` }}>
-        {matrix.map((row, rowIndex) =>
-          row.map((cell, columnIndex) => {
-            if (cell === emptyCell) return <EmptyTile key={emptyCell} />;
-            return <Tile number={cell} onClick={() => handleClick(rowIndex, columnIndex)} key={cell}></Tile>;
-          }),
-        )}
-      </div>
-      {isExploding && <ConfettiExplosion />}
-    </>
+    <div className="relative grid grid-cols-1 gap-4" style={{ gridTemplateColumns: `repeat(${rows}, minmax(0, 1fr))` }}>
+      {matrix.map((row, rowIndex) =>
+        row.map((cell, columnIndex) => {
+          if (cell === emptyCell) return <EmptyTile key={emptyCell} />;
+          return <Tile number={cell} onClick={() => handleClick(rowIndex, columnIndex)} key={cell}></Tile>;
+        }),
+      )}
+      {isExploding && (
+        <ConfettiExplosion
+          style={{ position: 'absolute', inset: '0', margin: 'auto' }}
+          force={0.75}
+          particleCount={200}
+        />
+      )}
+    </div>
   );
 }
 
