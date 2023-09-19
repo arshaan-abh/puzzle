@@ -1,10 +1,16 @@
-export default function generateUniqueRandomMatrix(rows: number, columns: number): number[][] | null {
+import { Matrix } from '../@types/matrix.ts';
+
+export default function generateUniqueRandomMatrix<T>(
+  rows: number,
+  columns: number,
+  generateCell: (number: number) => T,
+): Matrix<T> {
   if (rows <= 0 || columns <= 0) {
-    return null; // Invalid matrix dimensions
+    throw 'Invalid matrix dimensions';
   }
 
   if (rows * columns < Math.max(rows, columns)) {
-    return null; // Matrix dimensions too large, causing potential infinite loop
+    throw 'Matrix dimensions too large, causing potential infinite loop';
   }
 
   const totalElements = rows * columns;
@@ -17,14 +23,14 @@ export default function generateUniqueRandomMatrix(rows: number, columns: number
   }
 
   // Initialize the matrix
-  const matrix: number[][] = [];
+  const matrix: Matrix<T> = [];
   let index = 0;
 
   for (let i = 0; i < rows; i++) {
     matrix[i] = [];
 
     for (let j = 0; j < columns; j++) {
-      matrix[i][j] = uniqueNumbers[index++];
+      matrix[i][j] = generateCell(uniqueNumbers[index++]);
     }
   }
 
