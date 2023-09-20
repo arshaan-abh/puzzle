@@ -17,6 +17,7 @@ export default function matrixCellSwap<T>(
   clonedMatrix[row1][col1] = clonedMatrix[row2][col2];
   clonedMatrix[row2][col2] = temp;
 
+  // Reset style
   for (const row of clonedMatrix) {
     for (const cell of row) {
       setTransform('translate(0, 0)', cell);

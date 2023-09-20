@@ -1,4 +1,6 @@
-export default function isMatrixSorted<T>(matrix: T[][] | null, elementGenerator: (index: T) => number): boolean {
+import { Matrix } from '../@types/matrix.ts';
+
+export default function isMatrixSorted<T>(matrix: Matrix<T> | null, elementGenerator: (index: T) => number): boolean {
   if (matrix === null) return false;
 
   // Initialize the expected value to 1
